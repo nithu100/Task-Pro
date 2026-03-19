@@ -14,7 +14,6 @@
         .btn-grad { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .btn-grad:active { transform: scale(0.92); }
         
-        /* Premium Toast UI */
         #toast-container { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 5000; width: 90%; max-width: 350px; pointer-events: none; }
         .toast { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); padding: 16px 20px; border-radius: 20px; display: flex; align-items: center; gap: 12px; margin-bottom: 10px; animation: slideDown 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -23,8 +22,6 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .nav-item { color: #64748b; font-size: 1.3rem; cursor: pointer; transition: 0.3s; padding: 10px 15px; border-radius: 15px; }
         .nav-active { color: var(--primary); background: rgba(59, 130, 246, 0.1); }
-
-        /* History Card */
         .h-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 15px; margin-bottom: 12px; }
     </style>
 </head>
@@ -38,15 +35,15 @@
             <div id="login-form" class="glass p-8 rounded-[2.5rem] space-y-4 text-left">
                 <input type="email" id="l-email" placeholder="Email" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800 outline-none">
                 <input type="password" id="l-pass" placeholder="Password" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800 outline-none">
-                <button onclick="handleLogin()" class="w-full btn-grad py-4 rounded-2xl font-black">Login Account</button>
+                <button onclick="handleLogin()" class="w-full btn-grad py-4 rounded-2xl font-black text-lg">Login</button>
                 <p class="text-center text-xs text-slate-500">New? <span onclick="toggleAuth()" class="text-blue-400 font-bold">Register</span></p>
             </div>
             <div id="reg-form" class="hidden glass p-8 rounded-[2.5rem] space-y-4 text-left">
-                <input type="text" id="r-name" placeholder="Name" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
-                <input type="email" id="r-email" placeholder="Email" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
-                <input type="password" id="r-pass" placeholder="Password" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
-                <input type="text" id="r-refer" placeholder="Referral Code" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800 text-center uppercase font-bold">
-                <button onclick="handleRegister()" class="w-full btn-grad py-4 rounded-2xl font-black">Sign Up</button>
+                <input type="text" id="r-name" placeholder="Full Name" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+                <input type="email" id="r-email" placeholder="Email Address" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+                <input type="password" id="r-pass" placeholder="Create Password" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+                <input type="text" id="r-refer" placeholder="Referral Code (Optional)" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-800 text-center uppercase font-bold">
+                <button onclick="handleRegister()" class="w-full btn-grad py-4 rounded-2xl font-black text-lg">Sign Up</button>
                 <p class="text-center text-xs text-slate-500">Back to <span onclick="toggleAuth()" class="text-blue-400 font-bold">Login</span></p>
             </div>
         </div>
@@ -62,7 +59,7 @@
         </header>
 
         <div class="glass p-8 rounded-[2.5rem] bg-gradient-to-br from-blue-600/10 to-transparent mb-10 border-blue-500/20 shadow-xl">
-            <p class="text-slate-400 text-sm font-semibold mb-1">Total Balance</p>
+            <p class="text-slate-400 text-sm font-semibold mb-1">Available Balance</p>
             <h3 class="text-5xl font-black tracking-tighter text-blue-400">₹<span id="balance">0.00</span></h3>
             <div class="grid grid-cols-2 gap-4 mt-8">
                 <button onclick="showWithdraw()" class="bg-white text-slate-950 py-3 rounded-xl font-black text-[11px] uppercase tracking-wider">Withdrawal</button>
@@ -74,17 +71,8 @@
             </div>
         </div>
 
-        <a href="https://www.instagram.com/task_pro_247_support?igsh=bDV4enQycnFiZHlk" target="_blank" class="glass p-5 rounded-[2rem] flex items-center gap-4 mb-8 border-blue-500/10 active:scale-95 transition-all">
-            <div class="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400 text-xl"><i class="fab fa-telegram-plane"></i></div>
-            <div>
-                <h4 class="font-black text-sm">Official Helpline</h4>
-                <p class="text-[10px] text-slate-500 font-bold uppercase">Join Telegram for Support</p>
-            </div>
-            <i class="fas fa-chevron-right ml-auto text-slate-700 text-xs"></i>
-        </a>
-
         <div id="section-view">
-            <h4 class="text-xl font-black mb-6">Earn Money</h4>
+            <h4 class="text-xl font-black mb-6 flex items-center gap-2"><i class="fas fa-fire text-orange-500"></i> Active Tasks</h4>
             <div id="task-list" class="space-y-4 pb-10"></div>
         </div>
     </div>
@@ -106,17 +94,17 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
         import { getDatabase, ref, onValue, set, push, get, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-        import { getStorage, ref as sRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
-        const firebaseConfig = { apiKey: "AIzaSyDx4Op4Z93ut30pIfnmSqW8EB4yrb772XA", authDomain: "tiger-8249f.firebaseapp.com", databaseURL: "https://tiger-8249f-default-rtdb.firebaseio.com", projectId: "tiger-8249f", storageBucket: "tiger-8249f.firebasestorage.app" };
+        // Your Firebase Config (Tiger Project)
+        const firebaseConfig = { apiKey: "AIzaSyDx4Op4Z93ut30pIfnmSqW8EB4yrb772XA", authDomain: "tiger-8249f.firebaseapp.com", databaseURL: "https://tiger-8249f-default-rtdb.firebaseio.com", projectId: "tiger-8249f" };
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getDatabase(app);
-        const storage = getStorage(app);
 
         let userUID = null;
         let userData = {};
 
+        // Toast Notifications
         window.showToast = (msg, type = "error") => {
             const container = document.getElementById('toast-container');
             const icon = type === "success" ? "fa-check-circle text-green-400" : "fa-exclamation-circle text-red-400";
@@ -127,6 +115,7 @@
             setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400); }, 3000);
         };
 
+        // Navigation
         window.switchTab = (tab, el) => {
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('nav-active'));
             el.classList.add('nav-active');
@@ -140,11 +129,12 @@
             document.getElementById('reg-form').classList.toggle('hidden');
         };
 
+        // Auth Logic
         window.handleLogin = async () => {
             const e = document.getElementById('l-email').value;
             const p = document.getElementById('l-pass').value;
-            if(!e || !p) return showToast("Enter email & password!");
-            try { await signInWithEmailAndPassword(auth, e, p); } catch(err) { showToast(err.message); }
+            if(!e || !p) return showToast("Details bhariye!");
+            try { await signInWithEmailAndPassword(auth, e, p); } catch(err) { showToast("Login Failed!"); }
         };
 
         window.handleRegister = async () => {
@@ -152,10 +142,16 @@
             const e = document.getElementById('r-email').value;
             const p = document.getElementById('r-pass').value;
             const r = document.getElementById('r-refer').value;
-            if(!n || !e || !p) return showToast("Fill all details!");
+            if(!n || !e || !p) return showToast("Sabhi box bhariye!");
             try {
                 const res = await createUserWithEmailAndPassword(auth, e, p);
-                await set(ref(db, `users/${res.user.uid}`), { userName: n, email: e, balance: 0, referralCode: res.user.uid.slice(0,6).toUpperCase(), referredBy: r || "" });
+                await set(ref(db, `users/${res.user.uid}`), { 
+                    userName: n, 
+                    email: e, 
+                    balance: 0, 
+                    referralCode: res.user.uid.slice(0,6).toUpperCase(), 
+                    referredBy: r || "" 
+                });
             } catch(err) { showToast(err.message); }
         };
 
@@ -174,12 +170,10 @@
 
         function syncData() {
             onValue(ref(db, `users/${userUID}`), (snap) => {
-                userData = snap.val();
-                if(userData) {
-                    document.getElementById('u-name-display').innerText = userData.userName;
-                    document.getElementById('balance').innerText = (userData.balance || 0).toFixed(2);
-                    document.getElementById('ref-code').innerText = userData.referralCode;
-                }
+                userData = snap.val() || {};
+                document.getElementById('u-name-display').innerText = userData.userName || "User";
+                document.getElementById('balance').innerText = (userData.balance || 0).toFixed(2);
+                document.getElementById('ref-code').innerText = userData.referralCode || "---";
             });
         }
 
@@ -188,21 +182,22 @@
                 const list = document.getElementById('task-list');
                 list.innerHTML = '';
                 const tasks = snap.val();
-                if(!tasks) return;
+                if(!tasks) { list.innerHTML = '<p class="text-center py-10 text-slate-600 font-bold uppercase text-[10px]">No Tasks Available</p>'; return; }
                 for (let id in tasks) {
                     list.innerHTML += `
-                        <div class="glass p-5 rounded-[2rem] flex gap-4 items-center shadow-lg border-white/5">
-                            <img src="${tasks[id].image}" class="w-14 h-14 rounded-2xl object-cover bg-slate-800 shadow-xl">
+                        <div class="glass p-5 rounded-[2rem] flex gap-4 items-center border-white/5 active:scale-95 transition-all">
+                            <img src="${tasks[id].image}" class="w-14 h-14 rounded-2xl object-cover bg-slate-800">
                             <div class="flex-1">
                                 <h5 class="font-bold text-sm leading-tight">${tasks[id].title}</h5>
                                 <p class="text-blue-400 font-black text-xs mt-1">₹${tasks[id].reward}</p>
                             </div>
-                            <button onclick="viewTask('${id}')" class="bg-blue-600/10 text-blue-400 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-blue-500/20 active:scale-95 transition-all">Claim</button>
+                            <button onclick="viewTask('${id}')" class="bg-blue-600/10 text-blue-400 px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest border border-blue-500/20">Claim</button>
                         </div>`;
                 }
             });
         }
 
+        // --- UPDATED VIEW TASK WITH LINK PROOF ---
         window.viewTask = async (id) => {
             const t = (await get(ref(db, `tasks/${id}`))).val();
             document.getElementById('modal-body').innerHTML = `
@@ -212,8 +207,13 @@
                     <p class="text-slate-500 text-[10px] mb-8 font-medium">${t.desc}</p>
                     <div class="space-y-4">
                         <a href="${t.link}" target="_blank" class="block w-full bg-blue-500/10 text-blue-400 py-4 rounded-2xl font-black border border-blue-500/20 text-xs">COMPLETE TASK <i class="fas fa-external-link-alt ml-1"></i></a>
-                        <div class="text-left"><p class="text-[9px] font-black text-slate-500 uppercase ml-2 mb-2 italic tracking-widest">Select Screenshot</p><input type="file" id="pInp" class="w-full text-xs text-slate-500 bg-slate-900 p-4 rounded-2xl border border-slate-800"></div>
-                        <button id="sBtn" onclick="submitProof('${id}')" class="w-full btn-grad py-4 rounded-2xl font-black text-sm">Submit Verification</button>
+                        
+                        <div class="text-left">
+                            <p class="text-[9px] font-black text-slate-500 uppercase ml-2 mb-2 italic tracking-widest">Paste Screenshot Link</p>
+                            <input type="text" id="pLinkInp" placeholder="e.g. https://postimg.cc/..." class="w-full text-xs text-slate-200 bg-slate-900 p-4 rounded-2xl border border-slate-800 outline-none">
+                        </div>
+                        
+                        <button id="sBtn" onclick="submitProof('${id}')" class="w-full btn-grad py-4 rounded-2xl font-black text-sm">Submit Link</button>
                         <button onclick="closeModal()" class="w-full text-slate-600 text-[10px] font-black uppercase tracking-widest pt-2">Close</button>
                     </div>
                 </div>`;
@@ -221,48 +221,25 @@
         };
 
         window.submitProof = async (tid) => {
-            const file = document.getElementById('pInp').files[0];
-            if(!file) return showToast("Photo select karo bhai!");
+            const link = document.getElementById('pLinkInp').value.trim();
+            if(!link) return showToast("Proof link paste karein!");
+            if(!link.startsWith('http')) return showToast("Invalid URL!");
+
             const btn = document.getElementById('sBtn');
             btn.innerHTML = '<div class="loader mx-auto"></div>';
             btn.disabled = true;
+
             try {
-                const fPath = `proofs/${userUID}/${Date.now()}_${file.name}`;
-                const fRef = sRef(storage, fPath);
-                const snap = await uploadBytes(fRef, file);
-                const url = await getDownloadURL(snap.ref);
-                await push(ref(db, 'submissions'), { userId: userUID, taskId: tid, proofImage: url, status: 'pending', timestamp: Date.now() });
-                showToast("Proof Sent! Checking...", "success");
+                await push(ref(db, 'submissions'), { 
+                    userId: userUID, 
+                    taskId: tid, 
+                    proofImage: link, 
+                    status: 'pending', 
+                    timestamp: Date.now() 
+                });
+                showToast("Verification Sent!", "success");
                 closeModal();
-            } catch(e) { showToast(e.message); btn.innerHTML = "Submit Verification"; btn.disabled = false; }
-        };
-
-        window.showProfile = () => {
-            document.getElementById('modal-body').innerHTML = `
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-user-circle text-4xl text-blue-500"></i></div>
-                    <h3 class="text-2xl font-black mb-1">${userData.userName}</h3>
-                    <p class="text-slate-500 text-xs mb-8">${userData.email}</p>
-                    <div class="bg-slate-900/50 p-6 rounded-3xl border border-slate-800 space-y-4 text-left mb-6">
-                        <div class="flex justify-between items-center"><span class="text-slate-500 text-[10px] uppercase font-bold">User UID</span><span class="text-[9px] font-mono text-blue-400">${userUID.slice(0,10)}...</span></div>
-                        <div class="flex justify-between items-center"><span class="text-slate-500 text-[10px] uppercase font-bold">Balance</span><span class="text-lg font-black text-green-400">₹${(userData.balance || 0).toFixed(2)}</span></div>
-                    </div>
-                    <button onclick="closeModal()" class="w-full btn-grad py-4 rounded-2xl font-black">Close Profile</button>
-                </div>`;
-            document.getElementById('modal').classList.remove('hidden');
-        };
-
-        window.showReferralInfo = () => {
-            const code = document.getElementById('ref-code').innerText;
-            document.getElementById('modal-body').innerHTML = `
-                <div class="text-center py-4">
-                    <div class="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-gift text-2xl text-purple-400"></i></div>
-                    <h3 class="text-2xl font-black mb-2">Refer Friends</h3>
-                    <p class="text-slate-500 text-[10px] mb-8 px-4 leading-relaxed tracking-wide">Doston ko invite karein aur bonus paayein!</p>
-                    <div class="bg-slate-950 border-2 border-dashed border-slate-800 p-6 rounded-3xl mb-8 active:scale-95 transition-all text-center"><span class="text-3xl font-black tracking-[0.2em] text-blue-400 select-all">${code}</span></div>
-                    <button onclick="closeModal()" class="w-full btn-grad py-4 rounded-2xl font-black">Close</button>
-                </div>`;
-            document.getElementById('modal').classList.remove('hidden');
+            } catch(e) { showToast("Error!"); btn.innerHTML = "Submit Link"; btn.disabled = false; }
         };
 
         window.showWithdraw = () => {
@@ -270,9 +247,9 @@
                 <div class="text-center py-4">
                     <h3 class="text-2xl font-black mb-6 flex items-center justify-center gap-2"><i class="fas fa-wallet text-green-500"></i> Withdrawal</h3>
                     <div class="space-y-4">
-                        <input type="number" id="w-amt" placeholder="Enter Amount (Min ₹50)" class="w-full bg-slate-900 p-4 rounded-2xl outline-none border border-slate-800 font-black text-blue-400">
-                        <input type="text" id="w-upi" placeholder="Enter UPI ID (e.g. upi@okicici)" class="w-full bg-slate-900 p-4 rounded-2xl outline-none border border-slate-800 font-bold">
-                        <button id="wBtn" onclick="sendWithdraw()" class="w-full btn-grad py-4 rounded-2xl font-black mt-4 shadow-xl shadow-blue-500/20">Claim Money</button>
+                        <input type="number" id="w-amt" placeholder="Min ₹50" class="w-full bg-slate-900 p-4 rounded-2xl outline-none border border-slate-800 font-black text-blue-400">
+                        <input type="text" id="w-upi" placeholder="UPI ID (e.g. user@upi)" class="w-full bg-slate-900 p-4 rounded-2xl outline-none border border-slate-800 font-bold">
+                        <button id="wBtn" onclick="sendWithdraw()" class="w-full btn-grad py-4 rounded-2xl font-black mt-4">Claim Money</button>
                         <button onclick="closeModal()" class="w-full mt-2 text-slate-600 text-[10px] font-black uppercase tracking-widest pt-2">Close</button>
                     </div>
                 </div>`;
@@ -285,55 +262,66 @@
             const a = parseFloat(aVal);
             const b = parseFloat(userData.balance || 0);
             
-            if(!aVal || !upi) return showToast("Dono box bharo!");
-            if(a < 50) return showToast("Minimum  chahiye!");
-            if(a > b) return showToast("Balance kam hai bhai!");
+            if(!aVal || !upi) return showToast("Details bhariye!");
+            if(a < 50) return showToast("Min ₹50 required!");
+            if(a > b) return showToast("Balance kam hai!");
             
             const btn = document.getElementById('wBtn');
-            btn.disabled = true; btn.innerText = "Syncing...";
+            btn.disabled = true; btn.innerText = "Processing...";
 
             try {
-                // Anti-Minus: Update balance FIRST
+                // Anti-Minus Logic
                 await update(ref(db, `users/${userUID}`), { balance: b - a });
                 await push(ref(db, 'withdraw'), { userId: userUID, amount: a, upi: upi, status: 'pending', timestamp: Date.now() });
-                showToast("Request Sent Successfully!", "success");
+                showToast("Withdrawal Requested!", "success");
                 closeModal();
-            } catch(e) { showToast(e.message); btn.disabled = false; btn.innerText = "Claim Money"; }
+            } catch(e) { showToast("Error!"); btn.disabled = false; btn.innerText = "Claim Money"; }
         };
 
         window.showHistory = () => {
             document.getElementById('modal-body').innerHTML = `
-                <h3 class="text-xl font-black mb-6 text-center">Withdrawal History</h3>
-                <div id="hist-list" class="max-h-[350px] overflow-y-auto pr-2 space-y-3">
-                    <p class="text-center text-slate-600 text-xs py-10 italic">Loading...</p>
-                </div>
+                <h3 class="text-xl font-black mb-6 text-center">History</h3>
+                <div id="hist-list" class="max-h-[300px] overflow-y-auto pr-2 space-y-3">Loading...</div>
                 <button onclick="closeModal()" class="w-full btn-grad py-4 rounded-2xl font-black mt-6">Close</button>`;
             document.getElementById('modal').classList.remove('hidden');
-
+            
             get(ref(db, 'withdraw')).then((snap) => {
                 const list = document.getElementById('hist-list');
-                list.innerHTML = '';
                 const data = snap.val();
+                list.innerHTML = '';
                 let found = false;
                 if(data) {
                     Object.keys(data).reverse().forEach(k => {
                         if(data[k].userId === userUID) {
                             found = true;
                             const st = data[k].status;
-                            const color = st === 'paid' ? 'text-green-400' : 'text-orange-400';
-                            list.innerHTML += `
-                                <div class="h-card">
-                                    <div class="flex justify-between items-center mb-1">
-                                        <span class="text-lg font-black">₹${data[k].amount}</span>
-                                        <span class="text-[9px] font-black uppercase ${color} bg-white/5 px-2 py-1 rounded-md border border-white/5">${st}</span>
-                                    </div>
-                                    <p class="text-[9px] text-slate-500 font-bold">${new Date(data[k].timestamp).toLocaleString()}</p>
-                                </div>`;
+                            list.innerHTML += `<div class="h-card flex justify-between items-center"><div><p class="font-black">₹${data[k].amount}</p><p class="text-[8px] text-slate-500">${new Date(data[k].timestamp).toLocaleDateString()}</p></div><span class="text-[9px] font-bold uppercase ${st === 'paid' ? 'text-green-400' : 'text-orange-400'}">${st}</span></div>`;
                         }
                     });
                 }
-                if(!found) list.innerHTML = '<p class="text-center text-slate-700 py-10 font-bold uppercase text-[10px] tracking-widest">No History Found</p>';
+                if(!found) list.innerHTML = '<p class="text-center text-slate-600 py-10">No records.</p>';
             });
+        };
+
+        window.showProfile = () => {
+            document.getElementById('modal-body').innerHTML = `
+                <div class="text-center">
+                    <h3 class="text-2xl font-black mb-1">${userData.userName || "User"}</h3>
+                    <p class="text-slate-500 text-xs mb-8">${userData.email || "---"}</p>
+                    <button onclick="closeModal()" class="w-full btn-grad py-4 rounded-2xl font-black">Close</button>
+                </div>`;
+            document.getElementById('modal').classList.remove('hidden');
+        };
+
+        window.showReferralInfo = () => {
+            const code = document.getElementById('ref-code').innerText;
+            document.getElementById('modal-body').innerHTML = `
+                <div class="text-center">
+                    <h3 class="text-2xl font-black mb-6">Refer & Earn</h3>
+                    <div class="bg-slate-950 border-2 border-dashed border-slate-800 p-6 rounded-3xl mb-8"><span class="text-3xl font-black text-blue-400 select-all">${code}</span></div>
+                    <button onclick="closeModal()" class="w-full btn-grad py-4 rounded-2xl font-black">Done</button>
+                </div>`;
+            document.getElementById('modal').classList.remove('hidden');
         };
 
         window.closeModal = () => document.getElementById('modal').classList.add('hidden');
